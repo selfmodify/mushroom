@@ -25,11 +25,11 @@
 
 # From: https://leetcode.com/problems/number-of-islands/description/
 
-def find_islands(a):
+def find_islands(name, a):
     island_count = 0
     ci = -1  # current island
     for i in range(len(a)):
-        for j in range(len(a)):
+        for j in range(len(a[i])):
             if a[i][j] == 0:
                 ci = -1  # No longer on land
             elif a[i][j] == 1:
@@ -40,29 +40,51 @@ def find_islands(a):
                     else:
                         island_count += 1
                         ci = island_count
-    print("# of islands is", island_count)
+    print("Number of islands in test ", name, " is ", island_count)
     return island_count
 
 
-def test1():
+def test_3_islands():
     a = [
         [1, 1, 1, 1, 0],
         [1, 1, 0, 1, 0],
-        [1, 1, 0, 0, 0],
-        [0, 0, 0, 0, 0],
+        [1, 1, 0, 0, 1],
+        [0, 0, 0, 1, 0],
     ]
-    find_islands(a)
+    find_islands("3 Islands", a)
 
 
-def test2():
+def test_5_islands():
     a = [
-        [1, 1, 0, 0, 0],
-        [1, 1, 0, 0, 0],
+        [1, 1, 0, 1, 0],
+        [1, 1, 0, 0, 1],
         [0, 0, 1, 0, 0],
         [0, 0, 0, 1, 1],
     ]
-    find_islands(a)
+    find_islands("5 Islands", a)
 
 
-test1()
-test2()
+def test_0_islands():
+    a = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+    ]
+    find_islands("0 Islands", a)
+
+
+def test_1_big_island():
+    a = [
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1],
+    ]
+    find_islands("1 Island", a)
+
+
+test_3_islands()
+test_5_islands()
+test_0_islands()
+test_1_big_island()
