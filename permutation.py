@@ -16,5 +16,7 @@ def permutation_rec(a):
     return l
 
 
-for r in permutation_rec('abcd'):
-    print(r)
+count = 0
+for r in permutation_rec('chips'):
+    count += 1
+    print(count, r)
