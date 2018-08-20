@@ -18,8 +18,8 @@ def doencode_rec(num, pos, ans):
 
     if pos+1 < len(num):
         x2 = num[pos] + num[pos+1]
-        enc_x2 = encmap[x2]
         if x2 in encmap:
+            enc_x2 = encmap[x2]
             doencode_rec(num, pos+2, ans + enc_x2)
 
 
@@ -29,4 +29,5 @@ def doencode(num):
 
 
 doencode('21')
+doencode('274')
 doencode('214')
