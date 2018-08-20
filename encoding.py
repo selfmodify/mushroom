@@ -8,19 +8,25 @@ encmap = {
 }
 
 
-def doencode(num, pos, ans):
+def doencode_rec(num, pos, ans):
     if pos >= len(num):
         print(ans)
         return
     x1 = num[pos]
     enc_x1 = encmap[x1]
-    doencode(num, pos+1, ans + enc_x1)
+    doencode_rec(num, pos+1, ans + enc_x1)
 
     if pos+1 < len(num):
         x2 = num[pos] + num[pos+1]
         enc_x2 = encmap[x2]
         if x2 in encmap:
-            doencode(num, pos+2, ans + enc_x2)
+            doencode_rec(num, pos+2, ans + enc_x2)
 
 
-doencode('214', 0, '')
+def doencode(num):
+    print('Encoding for ', num, 'are')
+    doencode_rec(num, 0, '')
+
+
+doencode('21')
+doencode('214')
