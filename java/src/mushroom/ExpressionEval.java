@@ -85,6 +85,8 @@ public class ExpressionEval {
 	}
 
 	public void eval(String expr) {
+		numbers.clear();
+		operators.clear();
 		System.out.println("Expression is: " + expr);
 		StringTokenizer st = new StringTokenizer(expr, "+-/*() \t", true);
 		while (st.hasMoreTokens()) {
@@ -121,5 +123,6 @@ public class ExpressionEval {
 	public static void main(String[] args) {
 		ExpressionEval ee = new ExpressionEval();
 		ee.eval("2*(3+4)");
+		ee.eval("(2*(3-4) + 7)");
 	}
 }
