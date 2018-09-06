@@ -81,13 +81,13 @@ public class ExpressionEval {
 		default:
 			throw new IllegalStateException("Invalid operator " + op);
 		}
-		System.out.printf("Value is: %d %s %d = %d\n", val1, op, val2, answer);
+		// System.out.printf("Value is: %d %s %d = %d\n", val1, op, val2, answer);
 	}
 
 	public void eval(String expr) {
 		numbers.clear();
 		operators.clear();
-		System.out.println("Expression is: " + expr);
+		System.out.print("Expression is: " + expr + "  = ");
 		StringTokenizer st = new StringTokenizer(expr, "+-/*() \t", true);
 		while (st.hasMoreTokens()) {
 			String token = st.nextToken();
@@ -114,15 +114,17 @@ public class ExpressionEval {
 				numbers.push(num);
 			}
 		}
+		// Evaluate everything on the stack
 		while (numbers.size() >= 2) {
 			evaluateTopOfStack();
 		}
-		System.out.println(numbers.pop());
+		System.out.println(numbers.pop() + "\n");
 	}
 
 	public static void main(String[] args) {
 		ExpressionEval ee = new ExpressionEval();
 		ee.eval("2*(3+4)");
 		ee.eval("(2*(3-4) + 7)");
+		ee.eval("(1+2+3+4)");
 	}
 }
