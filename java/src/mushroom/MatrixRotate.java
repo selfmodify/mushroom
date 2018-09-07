@@ -1,7 +1,7 @@
 package mushroom;
 
 public class MatrixRotate {
-
+	// Rotate a square clockwise
 	public void rotate(int[][]a) {
 		int n = a.length;
 		// Transpose
@@ -12,6 +12,8 @@ public class MatrixRotate {
 				a[j][i] = temp;						
 			}
 		}
+		System.out.println("After Transposing");
+		print(a);
 		// reverse rows
 		for (int i=0; i < n; i++) {
 			for (int j=0; j < n/2; j++ ) {
@@ -30,6 +32,7 @@ public class MatrixRotate {
 			}
 			System.out.println("");
 		}
+		System.out.println("");
 	}
 	public static void main(String[] args) {
 		var m = new MatrixRotate();
@@ -41,7 +44,6 @@ public class MatrixRotate {
 			
 		};
 		m.print(a);
-		System.out.println("\n");
 		m.rotate(a);
 		m.print(a);		
 	}
