@@ -141,8 +141,11 @@ public class BinaryTree {
 		BinaryTree bt = new BinaryTree();
 		bt.insert(new Listing(10));
 		bt.insert(new Listing(12));
+		bt.insert(new Listing(20));
 		bt.insert(new Listing(5));
 		bt.insert(new Listing(7));
+		bt.insert(new Listing(4));
+		bt.insert(new Listing(3));
 //		bt.insert(new Listing(45));
 //		bt.insert(new Listing(100));
 //		System.out.println(bt.bfs(new Listing(45)).l.number);
