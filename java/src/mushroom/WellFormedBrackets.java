@@ -1,4 +1,4 @@
-package com.rajesh.study;
+package mushroom;
 
 
 import java.util.HashMap;
