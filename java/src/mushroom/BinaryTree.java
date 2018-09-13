@@ -103,14 +103,14 @@ public class BinaryTree {
 		return dfsRecursion(l, root);
 	}
 
-	private void TargetRec(TreeNode t, List<ArrayList<TreeNode>> all, ArrayList<TreeNode> result, int target) {
+	private void FindTargetSumRecursive(TreeNode t, List<ArrayList<TreeNode>> allResults, ArrayList<TreeNode> result, int target) {
 		if (t == null) {
 			return;
 		}
 		target = target - t.l.number;
 		result.add(t);
 		if (target == 0) {
-			all.add(result);
+			allResults.add(result);
 			var r = new ArrayList<TreeNode>();
 			r.addAll(result);
 			result = r;
@@ -118,16 +118,16 @@ public class BinaryTree {
 		for (var i : t.children()) {
 			var r = new ArrayList<TreeNode>();
 			r.addAll(result);
-			TargetRec(i, all, r, target);
+			FindTargetSumRecursive(i, allResults, r, target);
 		}
 	}
 
-	private List<TreeNode> Target(TreeNode t, int target) {
+	private List<TreeNode> FindTragetSum(TreeNode t, int targetSum) {
 		var result = new ArrayList<TreeNode>();
 		var allResults = new ArrayList<ArrayList<TreeNode>>();
-		TargetRec(t, allResults, result, target);
+		FindTargetSumRecursive(t, allResults, result, targetSum);
 		// Print the results.
-		System.out.println("Path for target " + target + " is");
+		System.out.println("Path for target " + targetSum + " is");
 		for (var i : allResults) {
 			for (var j : i) {
 				System.out.print(j.l.number + ", ");
@@ -151,6 +151,6 @@ public class BinaryTree {
 //		System.out.println(bt.bfs(new Listing(45)).l.number);
 //		System.out.println(bt.dfs(new Listing(100)).l.number);
 
-		var r = bt.Target(bt.root, 22);
+		var r = bt.FindTragetSum(bt.root, 22);
 	}
 }
