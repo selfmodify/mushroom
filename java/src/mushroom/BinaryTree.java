@@ -1,7 +1,5 @@
 package mushroom;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -16,7 +14,6 @@ public class BinaryTree {
 		public Listing deepClone() {
 			return new Listing(number);
 		}
-
 	}
 
 	public static class TreeNode {
@@ -28,7 +25,6 @@ public class BinaryTree {
 		public TreeNode(Listing l) {
 			this.l = l.deepClone();
 		}
-
 	}
 
 	public TreeNode root;
