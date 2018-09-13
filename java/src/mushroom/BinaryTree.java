@@ -43,7 +43,6 @@ public class BinaryTree {
 	}
 
 	public void insert(Listing l) {
-
 		if (root == null) {
 			root = new TreeNode(l);
 			return;
@@ -104,14 +103,50 @@ public class BinaryTree {
 		return dfsRecursion(l, root);
 	}
 
+	private void TargetRec(TreeNode t, List<ArrayList<TreeNode>> all, ArrayList<TreeNode>result, int target) {
+		if (t == null) {
+			return;
+		}
+		target = target - t.l.number;
+		if (target < 0) {
+			return;
+		}
+		result.add(t);
+		if (target == 0) {
+			all.add(result);
+			return;
+		}
+		for (var i : t.children()) {
+			var r = new ArrayList<TreeNode>();
+			r.addAll(result);
+			TargetRec(i, all, r, target);
+		}
+	}
+	
+	private List<TreeNode> Target(TreeNode t, int target)  {
+		var result = new ArrayList<TreeNode>();
+		var allResults = new ArrayList<ArrayList<TreeNode>>();
+		TargetRec(t, allResults, result, target);
+		// Print the results.
+		System.out.println("Path for target " +  target + " is");
+		for(var i : allResults) {
+			for(var j : i) {
+				System.out.println(j.l.number);
+			}			
+		}
+		return result;
+	}
+	
 	public static void main(String[] args) {
 		BinaryTree bt = new BinaryTree();
 		bt.insert(new Listing(50));
 		bt.insert(new Listing(40));
-		bt.insert(new Listing(30));
-		bt.insert(new Listing(45));
-		bt.insert(new Listing(100));
-		System.out.println(bt.bfs(new Listing(45)).l.number);
-		System.out.println(bt.dfs(new Listing(100)).l.number);
+//		bt.insert(new Listing(30));
+//		bt.insert(new Listing(45));
+//		bt.insert(new Listing(100));
+//		System.out.println(bt.bfs(new Listing(45)).l.number);
+//		System.out.println(bt.dfs(new Listing(100)).l.number);
+		
+		var r = bt.Target(bt.root, 90);
 	}
 }
