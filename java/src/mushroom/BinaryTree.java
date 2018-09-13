@@ -1,6 +1,8 @@
 package mushroom;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class BinaryTree {
@@ -24,6 +26,13 @@ public class BinaryTree {
 
 		public TreeNode(Listing l) {
 			this.l = l.deepClone();
+		}
+		
+		public List<TreeNode> children() {
+			var l = new ArrayList<TreeNode>();
+			l.add(left);
+			l.add(right);
+			return l;
 		}
 	}
 
